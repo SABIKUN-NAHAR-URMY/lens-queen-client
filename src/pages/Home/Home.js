@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import img1 from '../../images/1.jpg';
 import img2 from '../../images/2.jpg';
 import img3 from '../../images/3.jpg';
@@ -6,15 +6,24 @@ import Slider from './Slider/Slider';
 import adgImg1 from '../../images/body1.jpg';
 import adgImg2 from '../../images/body2.jpg';
 import { FaArrowRight, FaMapMarkerAlt } from "react-icons/fa";
-import uImg from '../../images/urmy-bg-pic.png';
+import uImg from '../../images/urmy-bg-pic.jpg';
 import portfolio1 from '../../images/portfolio1.jpg';
 import portfolio2 from '../../images/portfolio2.jpg';
 import portfolio3 from '../../images/portfolio3.jpg';
 import portfolio4 from '../../images/portfolio4.jpg';
 import portfolio5 from '../../images/portfolio5.jpg';
 import portfolio6 from '../../images/portfolio6.jpg';
+import ServiceCard from '../Services/ServiceCard/ServiceCard';
+
 
 const Home = () => {
+    const [services, setServices] = useState([]);
+    useEffect(()=>{
+        fetch('http://localhost:5000/services')
+        .then(res => res.json())
+        .then(data => setServices(data))
+    },[]);
+
     const sliderItem = [
         {
             image: img1,
@@ -38,6 +47,7 @@ const Home = () => {
     ]
     return (
         <div>
+            {/* slider section  */}
             <div className="carousel w-full rounded-lg">
 
                 {
@@ -48,11 +58,21 @@ const Home = () => {
 
             </div>
 
+            {/* services section  */}
+            <div>
+                {
+                    services.map(service => <ServiceCard
+                    key={service._id}
+                    service={service}></ServiceCard>)
+                }
+            </div>
+
+            {/* Advantages section  */}
             <div className='lg:grid grid-cols-2 gap-5 mt-16'>
                 <div>
                     <div className="card bg-base-100 shadow-xl">
                         <div className="card-body">
-                            <p className='text-xl font-semibold text-slate-600'>Why me?</p>
+                            <p className='text-xl font-semibold text-slate-600'>Why <strong>LENS-QUEEN</strong>?</p>
                             <h2 className="card-title text-6xl">Advantages</h2>
                             <div className='border-2 rounded-xl m-5 p-5'>
                                 <div className='flex items-center'>
@@ -82,12 +102,11 @@ const Home = () => {
                     <img className='absolute right-24 top-1/3 w-1/2 rounded-lg shadow-2xl' src={adgImg1} alt="" />
                 </div>
             </div>
-
-            <h2 className='mt-20 text-5xl text-center'>Portfolio</h2>
-
-            <div className='lg:grid grid-cols-2 gap-5 mt-16'>
+            
+            {/* portfolio section  */}
+            <div className='lg:grid grid-cols-2 gap-5 mt-40'>
                 <div className='text-center'>
-                    <img className='w-28 mx-auto pb-9' src={uImg} alt="" />
+                    <img className='w-28 mx-auto pb-9 rounded-lg' src={uImg} alt="" />
                     <h2 className='text-xl font-semibold'>Sabikun Nahar Urmy</h2>
                     <div className='flex items-center justify-center mb-9'>
                         <FaMapMarkerAlt></FaMapMarkerAlt>
