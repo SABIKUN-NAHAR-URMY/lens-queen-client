@@ -25,11 +25,6 @@ const Home = () => {
             .then(data => setServices(data))
     }, []);
 
-    // const seeAllServices = () => {
-    //     <Navigate to=''></Navigate>
-
-    // }
-
     const sliderItem = [
         {
             image: img1,
