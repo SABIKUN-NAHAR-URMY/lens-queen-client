@@ -3,10 +3,9 @@ import { useLoaderData } from 'react-router-dom';
 
 const DetailsCard = () => {
     const data = useLoaderData();
-    console.log(data);
     return (
-        <div>
-            <div className="card w-96 bg-base-100 shadow-xl">
+        <div className='grid md:grid-cols-2 gap-6'>
+            <div className="card bg-base-100 shadow-xl">
                 <figure><img className='rounded-lg' src={data.image} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{data.name}</h2>
@@ -18,8 +17,16 @@ const DetailsCard = () => {
                 </div>
             </div>
 
-            <div>
+            <div className='border-2 rounded-xl'>
+                <h1 className='text-5xl font-bold text-center p-10'>Please Write A Review!</h1>
+                <form className='m-10 '>
+                    <input type="text" name='name' placeholder='Name' className="input input-bordered w-full mb-8"/>
+                    <input type="text" name='photoURL' placeholder='photoURL' className="input input-bordered w-full mb-8"/>
+                    <input type="number" name='rating' placeholder='Rating' className="input input-bordered w-full mb-8"/>
+                    <textarea className="textarea textarea-bordered w-full mb-8" placeholder="Write Review"></textarea>
 
+                    <input className='btn btn-active btn-ghost w-full' type="submit" value="Submit Review" />
+                </form>
             </div>
         </div>
     );

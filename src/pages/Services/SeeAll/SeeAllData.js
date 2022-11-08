@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SeeAllData = ({allData}) => {
     const { _id, name, price, image, rating, details } = allData;
@@ -15,7 +16,7 @@ const SeeAllData = ({allData}) => {
                 <div className="card-actions flex justify-center items-center">
                     <p className='text-lg font-semibold text-slate-600'>Price: {price} tk</p>
                     <p className='text-lg font-semibold text-slate-600'>Rating: {rating}</p>
-                    <button className="btn btn-active btn-ghost">Details</button>
+                    <Link to={`/details/${_id}`}><button className="btn btn-active btn-ghost">Details</button></Link>
                 </div>
             </div>
         </div>
