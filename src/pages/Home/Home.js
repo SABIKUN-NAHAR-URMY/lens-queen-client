@@ -98,12 +98,12 @@ const Home = () => {
                     </div>
                 </div>
                 <div className='grid md:grid-cols-3 gap-4'>
-                    <img src={portfolio1} alt="" />
-                    <img src={portfolio2} alt="" />
-                    <img src={portfolio3} alt="" />
-                    <img src={portfolio4} alt="" />
-                    <img src={portfolio5} alt="" />
-                    <img src={portfolio6} alt="" />
+                    <img className='rounded-lg shadow-xl' src={portfolio1} alt="" />
+                    <img className='rounded-lg shadow-xl' src={portfolio2} alt="" />
+                    <img className='rounded-lg shadow-xl' src={portfolio3} alt="" />
+                    <img className='rounded-lg shadow-xl' src={portfolio4} alt="" />
+                    <img className='rounded-lg shadow-xl' src={portfolio5} alt="" />
+                    <img className='rounded-lg shadow-xl' src={portfolio6} alt="" />
                 </div>
 
             </div>
