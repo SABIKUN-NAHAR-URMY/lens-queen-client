@@ -18,11 +18,11 @@ import ServiceCard from '../Services/ServiceCard/ServiceCard';
 
 const Home = () => {
     const [services, setServices] = useState([]);
-    useEffect(()=>{
+    useEffect(() => {
         fetch('http://localhost:5000/services')
-        .then(res => res.json())
-        .then(data => setServices(data))
-    },[]);
+            .then(res => res.json())
+            .then(data => setServices(data))
+    }, []);
 
     const sliderItem = [
         {
@@ -60,11 +60,16 @@ const Home = () => {
 
             {/* services section  */}
             <div>
-                {
-                    services.map(service => <ServiceCard
-                    key={service._id}
-                    service={service}></ServiceCard>)
-                }
+                <div className='grid md:grid-cols-3 gap-4 mt-16'>
+                    {
+                        services.map(service => <ServiceCard
+                            key={service._id}
+                            service={service}></ServiceCard>)
+                    }
+                </div>
+                <div className='w-full mx-auto'>
+                    <button className='btn btn-active btn-ghost'>See All</button>
+                </div>
             </div>
 
             {/* Advantages section  */}
@@ -102,7 +107,7 @@ const Home = () => {
                     <img className='absolute right-24 top-1/3 w-1/2 rounded-lg shadow-2xl' src={adgImg1} alt="" />
                 </div>
             </div>
-            
+
             {/* portfolio section  */}
             <div className='lg:grid grid-cols-2 gap-5 mt-40'>
                 <div className='text-center'>
