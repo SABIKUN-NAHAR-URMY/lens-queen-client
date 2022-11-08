@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Home from '../Home/Home';
 import Main from '../Main/Main';
+import SeeAll from '../Services/SeeAll/SeeAll';
 
 export const router = createBrowserRouter([
     {
@@ -10,6 +11,10 @@ export const router = createBrowserRouter([
             {
                 path:'/',
                 element: <Home></Home>
+            },
+            {
+                path:'/seeAll',
+                element: <SeeAll></SeeAll>
             }
         ]
     }

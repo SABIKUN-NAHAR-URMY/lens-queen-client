@@ -1,18 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-const ServiceCard = ({ service }) => {
-    const { _id, name, price, image, rating, details } = service;
-
-    const[detail, setDetail] = useState([]);
-    
-    useEffect(()=>{
-
-    },[]);
-
-    const handelDetails = id =>{
-
-    }
-
+const SeeAllData = ({allData}) => {
+    const { _id, name, price, image, rating, details } = allData;
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
             <figure><img className='rounded-lg' src={image} alt="Shoes" /></figure>
@@ -26,11 +15,11 @@ const ServiceCard = ({ service }) => {
                 <div className="card-actions flex justify-center items-center">
                     <p>Price: {price} tk</p>
                     <p>Rating: {rating}</p>
-                    <button onClick={()=>handelDetails(_id)} className="btn btn-active btn-ghost">Details</button>
+                    <button className="btn btn-active btn-ghost">Details</button>
                 </div>
             </div>
         </div>
     );
 };
 
-export default ServiceCard;
+export default SeeAllData;

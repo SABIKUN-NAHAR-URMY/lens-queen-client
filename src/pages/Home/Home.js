@@ -14,15 +14,21 @@ import portfolio4 from '../../images/portfolio4.jpg';
 import portfolio5 from '../../images/portfolio5.jpg';
 import portfolio6 from '../../images/portfolio6.jpg';
 import ServiceCard from '../Services/ServiceCard/ServiceCard';
-
+import { Link} from 'react-router-dom';
 
 const Home = () => {
     const [services, setServices] = useState([]);
+
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('http://localhost:5000/servicesLimit')
             .then(res => res.json())
             .then(data => setServices(data))
     }, []);
+
+    // const seeAllServices = () => {
+    //     <Navigate to=''></Navigate>
+
+    // }
 
     const sliderItem = [
         {
@@ -67,8 +73,8 @@ const Home = () => {
                             service={service}></ServiceCard>)
                     }
                 </div>
-                <div className='w-full mx-auto'>
-                    <button className='btn btn-active btn-ghost'>See All</button>
+                <div className='flex justify-center m-10'>
+                    <Link to='/seeAll'><button className='btn btn-active btn-ghost'>See All</button></Link>
                 </div>
             </div>
 
