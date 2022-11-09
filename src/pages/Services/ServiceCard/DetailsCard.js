@@ -21,6 +21,7 @@ const DetailsCard = () => {
             review,
             rating,
             reviewer: user?.displayName,
+            email: user?.email,
             reviewerImage: user?.photoURL
         }
 

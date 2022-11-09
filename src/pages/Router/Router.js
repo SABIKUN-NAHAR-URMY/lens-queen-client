@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import AddServices from '../AddServices/AddServices';
+import Blog from '../Blog/Blog';
 import Home from '../Home/Home';
 import Login from '../Login/Login';
 import Main from '../Main/Main';
@@ -18,6 +19,10 @@ export const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
+                path:'/blog',
+                element: <Blog></Blog>
+            },
+            {
                 path:'/seeAll',
                 element: <SeeAll></SeeAll>
             },
@@ -33,6 +38,7 @@ export const router = createBrowserRouter([
             {
                 path: '/myReviews',
                 element: <MyReviews></MyReviews>
+                // loader: () => fetch(``)
             },
             {
                 path: '/addServices',

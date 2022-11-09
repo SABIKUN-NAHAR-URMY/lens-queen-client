@@ -1,10 +1,11 @@
 import React from 'react';
 
 const MyReviews = () => {
+
     return (
-        <div>
-            
-        </div>
+        <div className='border-2 rounded-xl'>
+               
+            </div>
     );
 };
 
