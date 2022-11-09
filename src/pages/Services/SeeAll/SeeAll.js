@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import useTitle from '../../../Hooks/useTitle';
 import SeeAllData from './SeeAllData';
 
 const SeeAll = () => {
     const[seeAllData, setSeeAllData] = useState([]);
+    useTitle('SeeAll');
 
     useEffect(() => {
         fetch('http://localhost:5000/servicesAll')

@@ -15,9 +15,12 @@ import portfolio5 from '../../images/portfolio5.jpg';
 import portfolio6 from '../../images/portfolio6.jpg';
 import ServiceCard from '../Services/ServiceCard/ServiceCard';
 import { Link} from 'react-router-dom';
+import useTitle from '../../Hooks/useTitle';
 
 const Home = () => {
     const [services, setServices] = useState([]);
+
+    useTitle('Home');
 
     useEffect(() => {
         fetch('http://localhost:5000/servicesLimit')

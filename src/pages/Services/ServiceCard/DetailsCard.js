@@ -1,10 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../../Hooks/useTitle';
 
 const DetailsCard = () => {
     const { user } = useContext(AuthContext);
     const data = useLoaderData();
+
+    useTitle('Details');
+
     const [update, setUpdate] = useState(false);
 
     const [reviews, setReviews] = useState([]);

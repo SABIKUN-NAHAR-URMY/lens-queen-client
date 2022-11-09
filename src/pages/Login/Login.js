@@ -3,10 +3,14 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from "firebase/auth";
 import loginImg from '../../images/login.jpg';
+import useTitle from '../../Hooks/useTitle';
 
 const Login = () => {
     const provider = new GoogleAuthProvider();
     const { login, providerLogin } = useContext(AuthContext);
+
+    useTitle('Login');
+
     let navigate = useNavigate();
     let location = useLocation();
 
