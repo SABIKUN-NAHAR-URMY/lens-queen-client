@@ -1,11 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const DetailsCard = () => {
     const { user } = useContext(AuthContext);
-
     const data = useLoaderData();
+
+    const [reviews, setReviews] = useState([]);
+
     const handelReview = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -21,17 +23,24 @@ const DetailsCard = () => {
             reviewerImage: user?.photoURL
         }
 
-        fetch('http://localhost:5000/reviews',{
+        fetch('http://localhost:5000/reviews', {
             method: 'POST',
             headers: {
-                'content-type' : 'application/json'
+                'content-type': 'application/json'
             },
             body: JSON.stringify(reviewWrite)
         })
-        .then(res => res.json())
-        .then(data => console.log(data))
-        .catch(error => console.error(error))
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(error => console.error(error))
     }
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/reviews?serviceName=${data?.name}`)
+            .then(res => res.json())
+            .then(data => setReviews(data))
+    }, [data?.name]);
+
     return (
         <div className='grid md:grid-cols-2 gap-6'>
             <div className="card bg-base-100 shadow-xl">
@@ -67,7 +76,27 @@ const DetailsCard = () => {
             </div>
 
             <div className='border-2 rounded-xl'>
-
+                {
+                    reviews.map(review => {
+                        return (
+                            <div key={review._id}>
+                                <div className="card bg-base-100 shadow-xl">
+                                <div className="card-body">
+                                    <h2 className="card-title">ServiceName: {review.serviceName}</h2>
+                                    <h2>Review: {review.review}</h2>
+                                    <h2>Rating: {review.rating}</h2>
+                                    <h2>Reviewer: {review.reviewer}</h2>
+                                    <img className='w-24 rounded' src={review.reviewerImage} alt="" />
+                                   
+                                    <div className="card-actions justify-end">
+                                        {/* <button className="btn btn-primary">Buy Now</button> */}
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        )
+                    })
+                }
             </div>
         </div>
     );
