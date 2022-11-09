@@ -1,12 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const ReviewEdit = () => {
-    const { user } = useContext(AuthContext);
     const [reviewMy, setReviewMy] = useState([]);
     const router = useParams();
     const { id } = router;
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch(`http://localhost:5000/reviews/${id}`)
@@ -14,7 +13,7 @@ const ReviewEdit = () => {
             .then(data => setReviewMy(data))
     }, [id]);
 
-    const handelReview = event =>{
+    const handelReview = event => {
         event.preventDefault();
         const form = event.target;
         const review = form.review.value;
@@ -25,18 +24,19 @@ const ReviewEdit = () => {
             rating
         }
 
-        fetch(`http://localhost:5000/reviews/${id}`,{
+        fetch(`http://localhost:5000/reviews/${id}`, {
             method: 'PATCH',
-            headers:{
-                'content-type' : 'application/json'
+            headers: {
+                'content-type': 'application/json'
             },
             body: JSON.stringify(reviewWrite)
         })
-        .then(data => {
-            console.log(data);
-            alert('Review added')
-        })
-        .catch(error => console.error(error))
+            .then(data => {
+                console.log(data);
+                alert('Review Updated');
+                navigate('/myReviews');
+            })
+            .catch(error => console.error(error))
     }
 
     return (
