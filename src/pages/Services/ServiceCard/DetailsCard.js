@@ -26,7 +26,8 @@ const DetailsCard = () => {
             rating,
             reviewer: user?.displayName,
             email: user?.email,
-            reviewerImage: user?.photoURL
+            reviewerImage: user?.photoURL,
+            dateAndTime: new Date()
         }
 
         fetch('http://localhost:5000/reviews', {
@@ -99,6 +100,7 @@ const DetailsCard = () => {
                                         <h2>Review: {review.review}</h2>
                                         <h2>Rating: {review.rating}</h2>
                                         <h2>Reviewer: {review.reviewer}</h2>
+                                        <h2>Date and Time: {review.dateAndTime}</h2>
                                         <img className='w-24 rounded' src={review.reviewerImage} alt="" />
                                     </div>
                                 </div>

@@ -39,7 +39,7 @@ const MyReviews = () => {
     //         headers: {
     //             'content-type': 'application/json'
     //         },
-    //         body: JSON.stringify({reviewMy.rating})
+    //         body: JSON.stringify({rating})
     //     })
     //         .then(res => res.json())
     //         .then(data => {

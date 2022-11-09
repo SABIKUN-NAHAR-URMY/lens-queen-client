@@ -64,7 +64,7 @@ const Home = () => {
 
             {/* services section  */}
             <div>
-                <div className='grid md:grid-cols-3 gap-4 mt-16'>
+                <div className='grid grid-cols-1 lg:grid-cols-3 gap-4 mt-16'>
                     {
                         services.map(service => <ServiceCard
                             key={service._id}
@@ -113,7 +113,7 @@ const Home = () => {
             </div>
 
             {/* portfolio section  */}
-            <div className='lg:grid grid-cols-2 gap-5 mt-40'>
+            <div className='lg:grid grid-cols-2 gap-5 mt-52 md:mt-80'>
                 <div className='text-center'>
                     <img className='w-28 mx-auto pb-9 rounded-lg' src={uImg} alt="" />
                     <h2 className='text-xl font-semibold'>Sabikun Nahar Urmy</h2>
