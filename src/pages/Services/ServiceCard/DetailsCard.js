@@ -96,10 +96,6 @@ const DetailsCard = () => {
                                         <h2>Rating: {review.rating}</h2>
                                         <h2>Reviewer: {review.reviewer}</h2>
                                         <img className='w-24 rounded' src={review.reviewerImage} alt="" />
-
-                                        <div className="card-actions justify-end">
-                                            {/* <button className="btn btn-primary">Buy Now</button> */}
-                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -38,7 +38,6 @@ export const router = createBrowserRouter([
             {
                 path: '/myReviews',
                 element: <MyReviews></MyReviews>
-                // loader: () => fetch(``)
             },
             {
                 path: '/addServices',
