@@ -4,30 +4,45 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import signupImg from '../../images/login.jpg';
 
 const Signup = () => {
-    const {createUser} = useContext(AuthContext);
+    const {createUser, modernizeProfile} = useContext(AuthContext);
 
-    // let navigate = useNavigate();
-    // let location = useLocation();
+    let navigate = useNavigate();
+    let location = useLocation();
 
-    // let from = location.state?.from?.pathname || "/";
+    let from = location.state?.from?.pathname || "/";
 
 
     const handelSignup = event =>{
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
+        const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
 
-        // console.log(name, email, password);
+        updateProfile(name, photoURL);
+
         createUser(email, password)
         .then(result => {
             const user = result.user;
             form.reset();
-            // navigate(from, { replace: true });
+            navigate(from, { replace: true });
         })
         .catch(error => console.error(error))
     }
+
+    const updateProfile = (name, photoURL) =>{
+        const profile = {
+            name: name,
+            photoURL: photoURL
+        }
+
+        modernizeProfile(profile)
+        .then(() => {})
+        .catch(error => console.error(error))
+        
+    }
+
     return (
         <div className="hero">
             <div className="hero-content my-10 grid md:grid-cols-2 gap-20 flex-col lg:flex-row">
@@ -42,6 +57,12 @@ const Signup = () => {
                                 <span className="label-text">Name</span>
                             </label>
                             <input name="name" type="text" placeholder="name" className="input input-bordered" />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">PhotoURL</span>
+                            </label>
+                            <input name="photoURL" type="text" placeholder="photoURL" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">

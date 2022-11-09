@@ -4,11 +4,12 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import loginImg from '../../images/login.jpg';
 
 const Login = () => {
-    const { login } = useContext(AuthContext);
-    // let navigate = useNavigate();
-    // let location = useLocation();
 
-    // let from = location.state?.from?.pathname || "/";
+    const { login } = useContext(AuthContext);
+    let navigate = useNavigate();
+    let location = useLocation();
+
+    let from = location.state?.from?.pathname || "/";
 
     const handelLogin = event => {
         event.preventDefault();
@@ -19,6 +20,8 @@ const Login = () => {
         login(email, password)
         .then(result => {
             const user = result.user;
+            form.reset();
+            navigate(from, { replace: true });
         })
         .catch(error => console.error(error))
     }
