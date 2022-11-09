@@ -13,8 +13,8 @@ const Slider = ({ slider }) => {
                 <a href={`#slide${prev}`} className="btn btn-circle mr-5">❮</a>
                 <a href={`#slide${next}`} className="btn btn-circle">❯</a>
             </div>
-            <div className="absolute top-1/2 left-52">
-                <h1 className='text-6xl text-white font-bold'>The Most Important Thing <br />
+            <div className="absolute top-16 lg:top-1/2 left-32 lg:left-52">
+                <h1 className='lg:text-6xl text-white font-bold'>The Most Important Thing <br />
                 At a Wedding is to <br />
                 Photography...
                 </h1>

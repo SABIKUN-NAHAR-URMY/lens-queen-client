@@ -41,14 +41,14 @@ const Header = () => {
                 <ul className="menu menu-horizontal p-0">
                     <Link to='/'><li className='md:px-5'>Home</li></Link>
                     {
-                            user?.uid ?
-                                <>
-                                    <Link to='/myReviews'><li className='md:px-5'>My Reviews</li></Link>
-                                    <Link to='/addServices'><li className='md:px-5'>Add Services</li></Link>
-                                </>
-                                :
-                                <Link to='/login'><li className='md:px-5'>Login</li></Link>
-                        }
+                        user?.uid ?
+                            <>
+                                <Link to='/myReviews'><li className='md:px-5'>My Reviews</li></Link>
+                                <Link to='/addServices'><li className='md:px-5'>Add Services</li></Link>
+                            </>
+                            :
+                            <Link to='/login'><li className='md:px-5'>Login</li></Link>
+                    }
                     <Link to='/signup'><li className='md:px-5'>Signup</li></Link>
                 </ul>
             </div>
