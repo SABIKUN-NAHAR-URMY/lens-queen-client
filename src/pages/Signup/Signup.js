@@ -20,20 +20,20 @@ const Signup = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        updateProfile(name, photoURL);
-
         createUser(email, password)
         .then(result => {
             const user = result.user;
+            console.log(user);
             form.reset();
+            updateUser(name, photoURL);
             navigate(from, { replace: true });
         })
         .catch(error => console.error(error))
     }
 
-    const updateProfile = (name, photoURL) =>{
+    const updateUser = (name, photoURL) =>{
         const profile = {
-            name: name,
+            displayName: name,
             photoURL: photoURL
         }
 
