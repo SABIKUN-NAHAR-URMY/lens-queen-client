@@ -5,6 +5,7 @@ import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 const DetailsCard = () => {
     const { user } = useContext(AuthContext);
     const data = useLoaderData();
+    const [update, setUpdate] = useState(false);
 
     const [reviews, setReviews] = useState([]);
 
@@ -31,15 +32,22 @@ const DetailsCard = () => {
             body: JSON.stringify(reviewWrite)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                console.log(data);
+                form.reset();
+                alert('Review added')
+                setUpdate(true);
+            })
             .catch(error => console.error(error))
     }
 
     useEffect(() => {
         fetch(`http://localhost:5000/reviews?serviceName=${data?.name}`)
             .then(res => res.json())
-            .then(data => setReviews(data))
-    }, [data?.name]);
+            .then(data => {
+                setReviews(data);
+            })
+    }, [data?.name, update]);
 
     return (
         <div className='grid md:grid-cols-2 gap-6'>
@@ -80,19 +88,19 @@ const DetailsCard = () => {
                     reviews.map(review => {
                         return (
                             <div key={review._id}>
-                                <div className="card bg-base-100 shadow-xl">
-                                <div className="card-body">
-                                    <h2 className="card-title">ServiceName: {review.serviceName}</h2>
-                                    <h2>Review: {review.review}</h2>
-                                    <h2>Rating: {review.rating}</h2>
-                                    <h2>Reviewer: {review.reviewer}</h2>
-                                    <img className='w-24 rounded' src={review.reviewerImage} alt="" />
-                                   
-                                    <div className="card-actions justify-end">
-                                        {/* <button className="btn btn-primary">Buy Now</button> */}
+                                <div className="m-5 card bg-base-100 shadow-xl">
+                                    <div className="card-body">
+                                        <h2 className="card-title">ServiceName: {review.serviceName}</h2>
+                                        <h2>Review: {review.review}</h2>
+                                        <h2>Rating: {review.rating}</h2>
+                                        <h2>Reviewer: {review.reviewer}</h2>
+                                        <img className='w-24 rounded' src={review.reviewerImage} alt="" />
+
+                                        <div className="card-actions justify-end">
+                                            {/* <button className="btn btn-primary">Buy Now</button> */}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             </div>
                         )
                     })

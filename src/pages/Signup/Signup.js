@@ -1,10 +1,13 @@
 import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { GoogleAuthProvider } from "firebase/auth";
 import signupImg from '../../images/login.jpg';
 
 const Signup = () => {
-    const {createUser, modernizeProfile} = useContext(AuthContext);
+    const {createUser, modernizeProfile, providerLogin} = useContext(AuthContext);
+
+    const provider = new GoogleAuthProvider();
 
     let navigate = useNavigate();
     let location = useLocation();
@@ -43,6 +46,15 @@ const Signup = () => {
         
     }
 
+    const handelGoogleLogin = () =>{
+        providerLogin(provider)
+        .then((result) => {
+            const user = result.user;
+            console.log(user);
+          })
+          .catch(error => console.error(error));
+    }
+
     return (
         <div className="hero">
             <div className="hero-content my-10 grid md:grid-cols-2 gap-20 flex-col lg:flex-row">
@@ -79,6 +91,9 @@ const Signup = () => {
                         </div>
                         <div className="form-control mt-6">
                             <input className="btn bg-slate-600" type="submit" value="Signup" />
+                        </div>
+                        <div className="form-control mt-6">
+                            <button onClick={handelGoogleLogin} className="btn bg-slate-600">Continue with Google</button>
                         </div>
                     </form>
                     <p className='text-center py-7'>Already have an account? <Link className='text-slate-600' to='/login'>Login</Link></p>
