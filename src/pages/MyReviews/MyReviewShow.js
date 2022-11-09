@@ -1,6 +1,7 @@
 import React from 'react';
 
-const MyReviewShow = ({ rm }) => {
+const MyReviewShow = ({ rm, handelDelete }) => {
+
     return (
         <div>
             <div className="card bg-base-100 shadow-xl m-5">
@@ -14,7 +15,7 @@ const MyReviewShow = ({ rm }) => {
 
                     <div className="card-actions justify-center">
                         <button className="btn btn-active btn-ghost">Edit</button>
-                        <button className="btn btn-active btn-ghost">Delete</button>
+                        <button onClick={()=>handelDelete(rm._id)} className="btn btn-active btn-ghost">Delete</button>
                     </div>
                 </div>
             </div>
