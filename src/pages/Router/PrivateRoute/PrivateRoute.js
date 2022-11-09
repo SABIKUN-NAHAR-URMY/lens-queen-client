@@ -8,7 +8,9 @@ const PrivateRoute = ({children}) => {
 
     if(loading)
     {
-        return <h1 className='text-5xl'>Loading...</h1>
+        return <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
     }
     if (user) {
         return children;

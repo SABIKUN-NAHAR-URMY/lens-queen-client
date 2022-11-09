@@ -7,12 +7,18 @@ import useTitle from '../../Hooks/useTitle';
 
 const Login = () => {
     const provider = new GoogleAuthProvider();
-    const { login, providerLogin } = useContext(AuthContext);
-
+    const { login, providerLogin, loading } = useContext(AuthContext);
     useTitle('Login');
 
     let navigate = useNavigate();
     let location = useLocation();
+
+    if(loading)
+    {
+        return <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    }
 
     let from = location.state?.from?.pathname || "/";
 

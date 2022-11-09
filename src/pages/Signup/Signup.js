@@ -6,14 +6,20 @@ import signupImg from '../../images/login.jpg';
 import useTitle from '../../Hooks/useTitle';
 
 const Signup = () => {
-    const {createUser, modernizeProfile, providerLogin} = useContext(AuthContext);
+    const {createUser, modernizeProfile, providerLogin, loading} = useContext(AuthContext);
 
     const provider = new GoogleAuthProvider();
-
     useTitle('Signup');
 
     let navigate = useNavigate();
     let location = useLocation();
+    
+    if(loading)
+    {
+        return <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    }
 
     let from = location.state?.from?.pathname || "/";
 
