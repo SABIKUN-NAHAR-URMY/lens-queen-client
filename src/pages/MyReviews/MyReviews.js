@@ -33,25 +33,6 @@ const MyReviews = () => {
         }
     }
 
-    // const handelUpdate = id => {
-    //     fetch(`http://localhost:5000/reviews/${id}`, {
-    //         method: 'PATCH',
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify({rating})
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data);
-    //             if (data.deletedCount > 0) {
-    //                 alert('Deleted successfully');
-    //                 const remaining = reviewMy.filter(rm => rm._id !== id);
-    //                 setReviewMy(remaining);
-    //             }
-    //         })
-    // }
-
 
 return (
     <div>

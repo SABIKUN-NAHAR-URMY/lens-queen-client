@@ -1,6 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const MyReviewShow = ({ rm, handelDelete }) => {
+
+    const navigate = useNavigate();
+    const handelEdit = id =>{
+        navigate(`/editReview/${id}`);
+    }
 
     return (
         <div>
@@ -15,7 +21,7 @@ const MyReviewShow = ({ rm, handelDelete }) => {
                     </div>
 
                     <div className="card-actions justify-center">
-                        <button className="btn btn-active btn-ghost">Edit</button>
+                        <button onClick={()=>handelEdit(rm._id)} className="btn btn-active btn-ghost">Edit</button>
                         <button onClick={()=>handelDelete(rm._id)} className="btn btn-active btn-ghost">Delete</button>
                     </div>
                 </div>

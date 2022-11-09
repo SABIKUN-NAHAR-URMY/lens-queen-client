@@ -5,6 +5,7 @@ import Home from '../Home/Home';
 import Login from '../Login/Login';
 import Main from '../Main/Main';
 import MyReviews from '../MyReviews/MyReviews';
+import ReviewEdit from '../MyReviews/ReviewEdit';
 import SeeAll from '../Services/SeeAll/SeeAll';
 import DetailsCard from '../Services/ServiceCard/DetailsCard';
 import Signup from '../Signup/Signup';
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
             {
                 path: '/myReviews',
                 element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
+            },
+            {
+                path: '/editReview/:id',
+                element: <ReviewEdit></ReviewEdit>
             },
             {
                 path: '/addServices',
