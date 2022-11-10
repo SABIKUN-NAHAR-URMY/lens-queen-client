@@ -23,7 +23,7 @@ const Home = () => {
     useTitle('Home');
 
     useEffect(() => {
-        fetch('http://localhost:5000/servicesLimit')
+        fetch('https://lens-queen-server.vercel.app/servicesLimit')
             .then(res => res.json())
             .then(data => setServices(data))
     }, []);

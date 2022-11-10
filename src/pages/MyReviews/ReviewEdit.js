@@ -11,7 +11,7 @@ const ReviewEdit = () => {
     useTitle('EditReview');
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews/${id}`)
+        fetch(`https://lens-queen-server.vercel.app/reviews/${id}`)
             .then(res => res.json())
             .then(data => setReviewMy(data))
     }, [id]);
@@ -27,7 +27,7 @@ const ReviewEdit = () => {
             rating
         }
 
-        fetch(`http://localhost:5000/reviews/${id}`, {
+        fetch(`https://lens-queen-server.vercel.app/reviews/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

@@ -34,15 +34,13 @@ const Signup = () => {
         createUser(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
                 form.reset();
                 updateUser(name, photoURL);
                 const currentUser = {
                     email: user.email
                 }
-                console.log(currentUser);
                 //get jwt token
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://lens-queen-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -51,7 +49,6 @@ const Signup = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
                         localStorage.setItem('token', data.token);
                         navigate(from, { replace: true });
                     })
@@ -80,7 +77,7 @@ const Signup = () => {
                     email: user.email
                 }
                 //get jwt token
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://lens-queen-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

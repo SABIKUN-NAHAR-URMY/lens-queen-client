@@ -31,7 +31,7 @@ export const router = createBrowserRouter([
             {
                 path:'/details/:id',
                 element: <DetailsCard></DetailsCard>,
-                loader: ({params}) => fetch(`http://localhost:5000/servicesAll/${params.id}`)
+                loader: ({params}) => fetch(`https://lens-queen-server.vercel.app/servicesAll/${params.id}`)
             },
             {
                 path:'/login',

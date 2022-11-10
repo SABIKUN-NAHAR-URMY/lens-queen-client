@@ -10,7 +10,7 @@ const SeeAll = () => {
     useTitle('SeeAll');
 
     useEffect(() => {
-        fetch('http://localhost:5000/servicesAll')
+        fetch('https://lens-queen-server.vercel.app/servicesAll')
             .then(res => res.json())
             .then(data => setSeeAllData(data))
     }, []);

@@ -11,7 +11,7 @@ const MyReviews = () => {
     useTitle('MyReviews');
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`,{
+        fetch(`https://lens-queen-server.vercel.app/reviews?email=${user?.email}`,{
             headers:{
                 authorization : `Bearer ${localStorage.getItem('token')}`
             }
@@ -28,7 +28,7 @@ const MyReviews = () => {
     const handelDelete = id => {
         const proceed = window.confirm('Are you sure you want to delete this review?');
         if (proceed) {
-            fetch(`http://localhost:5000/reviews/${id}`, {
+            fetch(`https://lens-queen-server.vercel.app/reviews/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

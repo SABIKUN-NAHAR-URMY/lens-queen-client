@@ -56,7 +56,7 @@ const Header = () => {
             </div>
             <div className="navbar-end">
                 {
-                    user?.photoURL ?
+                    user?.uid ?
                         <>
                             <span className='tooltip tooltip-bottom' data-tip={user?.displayName}><img className="rounded-full h-10" src={user.photoURL} alt="" /></span>
                             <button onClick={handelLogOut} className='px-2'>LogOut</button>

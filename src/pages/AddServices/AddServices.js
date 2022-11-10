@@ -23,7 +23,7 @@ const AddServices = () => {
             details
         }
 
-        fetch('http://localhost:5000/servicesAll', {
+        fetch('https://lens-queen-server.vercel.app/servicesAll', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -35,7 +35,7 @@ const DetailsCard = () => {
             dateAndTime: new Date()
         }
 
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://lens-queen-server.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -53,7 +53,7 @@ const DetailsCard = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews/queryService?serviceName=${data?.name}`)
+        fetch(`https://lens-queen-server.vercel.app/reviews/queryService?serviceName=${data?.name}`)
             .then(res => res.json())
             .then(data => {
                 setReviews(data);

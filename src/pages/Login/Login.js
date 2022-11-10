@@ -35,9 +35,8 @@ const Login = () => {
             const currentUser = {
                 email: user.email
             }
-            console.log(currentUser);
             //get jwt token
-            fetch('http://localhost:5000/jwt',{
+            fetch('https://lens-queen-server.vercel.app/jwt',{
                 method: 'POST',
                 headers: {
                     'content-type' : 'application/json'
@@ -46,7 +45,6 @@ const Login = () => {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 localStorage.setItem('token', data.token);
                 navigate(from, { replace: true });
             })
@@ -58,12 +56,11 @@ const Login = () => {
         providerLogin(provider)
         .then((result) => {
             const user = result.user;
-            console.log(user);
             const currentUser = {
                 email: user.email
             }
             //get jwt token
-            fetch('http://localhost:5000/jwt',{
+            fetch('https://lens-queen-server.vercel.app/jwt',{
                 method: 'POST',
                 headers: {
                     'content-type' : 'application/json'
@@ -72,7 +69,6 @@ const Login = () => {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 localStorage.setItem('token', data.token);
                 navigate(from, { replace: true });
             })
