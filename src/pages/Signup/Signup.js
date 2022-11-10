@@ -6,25 +6,24 @@ import signupImg from '../../images/login.jpg';
 import useTitle from '../../Hooks/useTitle';
 
 const Signup = () => {
-    const {createUser, modernizeProfile, providerLogin, loading} = useContext(AuthContext);
+    const { createUser, modernizeProfile, providerLogin, loading } = useContext(AuthContext);
     const provider = new GoogleAuthProvider();
 
     useTitle('Signup');
 
     let navigate = useNavigate();
     let location = useLocation();
-    
-    if(loading)
-    {
-        return <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
+
+    if (loading) {
+        return <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+            <span className="visually-hidden">Loading...</span>
+        </div>
     }
 
     let from = location.state?.from?.pathname || "/";
 
 
-    const handelSignup = event =>{
+    const handelSignup = (event) => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
@@ -33,35 +32,69 @@ const Signup = () => {
         const password = form.password.value;
 
         createUser(email, password)
-        .then(result => {
-            const user = result.user;
-            console.log(user);
-            form.reset();
-            updateUser(name, photoURL);
-            navigate(from, { replace: true });
-        })
-        .catch(error => console.error(error))
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                form.reset();
+                updateUser(name, photoURL);
+                const currentUser = {
+                    email: user.email
+                }
+                console.log(currentUser);
+                //get jwt token
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        localStorage.setItem('token', data.token);
+                        navigate(from, { replace: true });
+                    })
+            })
+            .catch(error => console.error(error))
     }
 
-    const updateUser = (name, photoURL) =>{
+    const updateUser = (name, photoURL) => {
         const profile = {
             displayName: name,
             photoURL: photoURL
         }
 
         modernizeProfile(profile)
-        .then(() => {})
-        .catch(error => console.error(error))
-        
+            .then(() => { })
+            .catch(error => console.error(error))
+
     }
 
-    const handelGoogleLogin = () =>{
+    const handelGoogleLogin = () => {
         providerLogin(provider)
-        .then((result) => {
-            const user = result.user;
-            console.log(user);
-          })
-          .catch(error => console.error(error));
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+                const currentUser = {
+                    email: user.email
+                }
+                //get jwt token
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        localStorage.setItem('token', data.token);
+                        navigate(from, { replace: true });
+                    })
+            })
+            .catch(error => console.error(error));
     }
 
     return (
@@ -89,7 +122,7 @@ const Signup = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input name="email" type="text" placeholder="email" className="input input-bordered" required/>
+                            <input name="email" type="text" placeholder="email" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">

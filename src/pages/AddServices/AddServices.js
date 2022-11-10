@@ -1,5 +1,6 @@
 import React from 'react';
 import useTitle from '../../Hooks/useTitle';
+import { toast } from 'react-toastify';
 
 const AddServices = () => {
 
@@ -33,7 +34,8 @@ const AddServices = () => {
             .then(data => {
                 console.log(data);
                 form.reset();
-                alert('Service added')
+                // alert('Service added')
+                toast("Service added!");
             })
             .catch(error => console.error(error))
     }

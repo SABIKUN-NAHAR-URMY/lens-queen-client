@@ -15,8 +15,8 @@ const Login = () => {
 
     if(loading)
     {
-        return <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
-        <span class="visually-hidden">Loading...</span>
+        return <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+        <span className="visually-hidden">Loading...</span>
       </div>
     }
 
@@ -59,6 +59,23 @@ const Login = () => {
         .then((result) => {
             const user = result.user;
             console.log(user);
+            const currentUser = {
+                email: user.email
+            }
+            //get jwt token
+            fetch('http://localhost:5000/jwt',{
+                method: 'POST',
+                headers: {
+                    'content-type' : 'application/json'
+                },
+                body: JSON.stringify(currentUser)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                localStorage.setItem('token', data.token);
+                navigate(from, { replace: true });
+            })
           })
           .catch(error => console.error(error));
     }
