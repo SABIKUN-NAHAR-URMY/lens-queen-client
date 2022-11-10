@@ -15,7 +15,8 @@
 # This is my project wedding photography related and named LENS-QUEEN
 
 # GitHub code link :
-1. client side: 
-2. server side:
+1. client side: [Github](https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-SABIKUN-NAHAR-URMY)
 
-# Live link :
+2. server side: [Github](https://github.com/Porgramming-Hero-web-course/b6a11-service-review-server-side-SABIKUN-NAHAR-URMY)
+
+# Live link : (https://lens-queen-3afeb.firebaseapp.com/)
