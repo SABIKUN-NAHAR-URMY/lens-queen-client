@@ -51,6 +51,7 @@ const Signup = () => {
                     .then(data => {
                         localStorage.setItem('token', data.token);
                         navigate(from, { replace: true });
+                        window.location.reload();
                     })
             })
             .catch(error => console.error(error))
