@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Navigate, useLoaderData, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../../Hooks/useTitle';
+import { toast } from 'react-toastify';
 
 const DetailsCard = () => {
     const { user } = useContext(AuthContext);
@@ -12,6 +13,10 @@ const DetailsCard = () => {
     const [update, setUpdate] = useState(false);
 
     const [reviews, setReviews] = useState([]);
+    const [redirect, setRedirect] = useState(false);
+
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
 
     const handelReview = (event) => {
         event.preventDefault();
@@ -41,7 +46,7 @@ const DetailsCard = () => {
             .then(data => {
                 console.log(data);
                 form.reset();
-                alert('Review added')
+                toast("Review added!");
                 setUpdate(true);
             })
             .catch(error => console.error(error))
@@ -57,6 +62,9 @@ const DetailsCard = () => {
 
     return (
         <div className='grid md:grid-cols-2 gap-6'>
+            {
+                redirect && <Navigate to="/login" state={{ from: location }} replace />
+            }
             <div className="card bg-base-100 shadow-xl">
                 <div>
                     <figure><img className='rounded-lg' src={data.image} alt="Shoes" /></figure>
@@ -82,7 +90,7 @@ const DetailsCard = () => {
                                     </form>
                                 </>
                                 :
-                                <h1 className='text-3xl font-bold text-center m-5'>Please Login to Add a Review!<Link className='btn btn-link text-3xl font-bold text-slate-700' to='/login'>Login</Link></h1>
+                                <h1 className='text-3xl font-bold text-center m-5'>Please Login to Add a Review!<button className='btn btn-link text-3xl font-bold text-slate-700' onClick={()=>{setRedirect(true)}}>Login</button></h1>
                         }
 
                     </div>

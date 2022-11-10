@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import useTitle from '../../Hooks/useTitle';
+import { toast } from 'react-toastify';
 
 const ReviewEdit = () => {
     const [reviewMy, setReviewMy] = useState([]);
     const router = useParams();
     const { id } = router;
     const navigate = useNavigate();
+    useTitle('EditReview');
 
     useEffect(() => {
         fetch(`http://localhost:5000/reviews/${id}`)
@@ -33,7 +36,7 @@ const ReviewEdit = () => {
         })
             .then(data => {
                 console.log(data);
-                alert('Review Updated');
+                toast("Review Updated!");
                 navigate('/myReviews');
             })
             .catch(error => console.error(error))

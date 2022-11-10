@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from "firebase/auth";
@@ -7,8 +7,8 @@ import useTitle from '../../Hooks/useTitle';
 
 const Signup = () => {
     const {createUser, modernizeProfile, providerLogin, loading} = useContext(AuthContext);
-
     const provider = new GoogleAuthProvider();
+
     useTitle('Signup');
 
     let navigate = useNavigate();
