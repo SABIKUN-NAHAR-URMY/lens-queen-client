@@ -53,7 +53,7 @@ const DetailsCard = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?serviceName=${data?.name}`)
+        fetch(`http://localhost:5000/reviews/queryService?serviceName=${data?.name}`)
             .then(res => res.json())
             .then(data => {
                 setReviews(data);
