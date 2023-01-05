@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import img1 from '../../images/homeVideo1.mp4';
 import img2 from '../../images/homeVideo2.mp4';
 import img3 from '../../images/homeVideo3.mp4';
@@ -13,9 +13,12 @@ import portfolio3 from '../../images/portfolio3.jpg';
 import portfolio4 from '../../images/portfolio4.jpg';
 import portfolio5 from '../../images/portfolio5.jpg';
 import portfolio6 from '../../images/portfolio6.jpg';
+import loveImg from '../../images/love.jpg';
 import ServiceCard from '../Services/ServiceCard/ServiceCard';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import useTitle from '../../Hooks/useTitle';
+import emailjs from '@emailjs/browser';
+import { toast } from 'react-toastify';
 
 const Home = () => {
     const [services, setServices] = useState([]);
@@ -27,7 +30,7 @@ const Home = () => {
             .then(res => res.json())
             .then(data => setServices(data))
     }, []);
-    
+
     const sliderItem = [
         {
             image: img1,
@@ -48,7 +51,26 @@ const Home = () => {
             next: 1
         }
 
-    ]
+    ];
+
+
+    const form = useRef();
+    const notify = () => {
+        toast.success('Send Your Info Successfully!');
+        form.reset();
+    };
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs.sendForm('gmail', 'template_0plwzna', form.current, 'RLXjZLUe26CX9a6Ml')
+            .then((result) => {
+                //   console.log(result.text);
+            }, (error) => {
+                //   console.log(error.text);
+            });
+    };
+
     return (
         <div>
             {/* slider section  */}
@@ -134,6 +156,27 @@ const Home = () => {
                     <img className='rounded-lg shadow-xl' src={portfolio6} alt="" />
                 </div>
 
+            </div>
+
+            {/* contact section  */}
+
+            <div className='lg:grid grid-cols-2 gap-6 mt-16'>
+                <div className='border p-20 bg-slate-100 text-center rounded-lg m-12'>
+                    <h1 className='text-xl font-thin mb-6'>WE ARE HERE TO HELP YOU TO REMEMBER THE BEST DAYS</h1>
+                    <p className='font-semibold'>In a professional context it often happens that private or corporate clients a publication to be made and presented with the actual content still not being ready. Think of a news blog that's filled with content hourly on the day of going live.</p>
+                    <img src={loveImg} className="w-20 h-20 rounded-full mx-auto" alt="" />
+                </div>
+                <div>
+                    <h1 className='font-thin text-3xl mt-12'>EXTRAORDINARY PHOTOGRAPHY. WE ARE HERE TO HELP YOU TO REMEMBER THE BEST DAYS</h1>
+
+                    <form className='mt-4 text-center w-[90%] mx-auto p-7' ref={form} onSubmit={sendEmail}>
+                        <input className='w-[90%] p-4 mb-4 border rounded-lg' type="text" name='name' placeholder='Full Name' required /><br />
+                        <input className='w-[90%] p-4 mb-4 border rounded-lg' type="text" name='email' placeholder='Email' required /><br />
+                        <input className='w-[90%] p-4 mb-4 border rounded-lg' type="text" name='phone' placeholder='Phone' required /><br />
+                        <textarea className='w-[90%] p-4 mb-4 border rounded-lg' name="message" id="" placeholder='Message' required></textarea><br />
+                        <button onClick={notify} className='btn btn-active btn-ghost ' type='submit'>Send</button>
+                    </form>
+                </div>
             </div>
         </div>
     );
