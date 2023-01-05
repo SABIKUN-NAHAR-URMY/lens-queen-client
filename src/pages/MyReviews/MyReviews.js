@@ -5,7 +5,7 @@ import MyReviewShow from './MyReviewShow';
 import { toast } from 'react-toastify';
 
 const MyReviews = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut, loading } = useContext(AuthContext);
     const [reviewMy, setReviewMy] = useState([]);
 
     useTitle('MyReviews');
@@ -54,7 +54,8 @@ const MyReviews = () => {
                     reviewMy.map(rm => <MyReviewShow
                         key={rm._id}
                         rm={rm}
-                        handelDelete={handelDelete}></MyReviewShow>)
+                        handelDelete={handelDelete}
+                        ></MyReviewShow>)
 
             }
         </div>

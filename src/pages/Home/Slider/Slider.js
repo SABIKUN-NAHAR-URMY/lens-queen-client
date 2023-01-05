@@ -42,12 +42,6 @@ const Slider = ({ slider }) => {
                 />
             </div>
 
-            {/* <div className="absolute top-16 lg:top-1/2 left-32 lg:left-52">
-                <h1 className='lg:text-6xl text-white font-bold'>The Most Important Thing <br />
-                    At a Wedding is to <br />
-                    Photography...
-                </h1>
-            </div> */}
         </div>
 
     );
