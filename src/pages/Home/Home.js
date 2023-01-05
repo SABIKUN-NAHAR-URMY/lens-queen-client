@@ -160,8 +160,8 @@ const Home = () => {
 
             {/* contact section  */}
 
-            <div className='lg:grid grid-cols-2 gap-6 mt-16'>
-                <div className='border p-20 bg-slate-100 text-center rounded-lg m-12'>
+            <div className='lg:grid grid-cols-2 gap-6 mt-16' id='contactMe'>
+                <div className='border p-5 md:p-20 bg-slate-100 text-center rounded-lg md:m-12'>
                     <h1 className='text-xl font-thin mb-6'>WE ARE HERE TO HELP YOU TO REMEMBER THE BEST DAYS</h1>
                     <p className='font-semibold'>In a professional context it often happens that private or corporate clients a publication to be made and presented with the actual content still not being ready. Think of a news blog that's filled with content hourly on the day of going live.</p>
                     <img src={loveImg} className="w-20 h-20 rounded-full mx-auto" alt="" />

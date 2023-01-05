@@ -23,6 +23,7 @@ const Header = () => {
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <Link to='/'><li className='md:px-5'>Home</li></Link>
                         <Link to='/blog'><li className='md:px-5'>Blog</li></Link>
+                        <a href='#contactMe'><li className='md:px-5'>Contact Me</li></a>
                         {
                             user?.uid ?
                                 <>
@@ -30,9 +31,11 @@ const Header = () => {
                                     <Link to='/addServices'><li className='md:px-5'>Add Services</li></Link>
                                 </>
                                 :
-                                <Link to='/login'><li className='md:px-5'>Login</li></Link>
+                                <>
+                                    <Link to='/login'><li className='md:px-5'>Login</li></Link>
+                                    <Link to='/signup'><li className='md:px-5'>Signup</li></Link>
+                                </>
                         }
-                        <Link to='/signup'><li className='md:px-5'>Signup</li></Link>
                     </ul>
                 </div>
                 <img className='w-16' src={logo} alt="" />
@@ -42,6 +45,7 @@ const Header = () => {
                 <ul className="menu menu-horizontal p-0">
                     <Link to='/'><li className='md:px-5'>Home</li></Link>
                     <Link to='/blog'><li className='md:px-5'>Blog</li></Link>
+                    <a href='#contactMe'><li className='md:px-5'>Contact Me</li></a>
                     {
                         user?.uid ?
                             <>
@@ -49,16 +53,18 @@ const Header = () => {
                                 <Link to='/addServices'><li className='md:px-5'>Add Services</li></Link>
                             </>
                             :
-                            <Link to='/login'><li className='md:px-5'>Login</li></Link>
+                            <>
+                                <Link to='/login'><li className='md:px-5'>Login</li></Link>
+                                <Link to='/signup'><li className='md:px-5'>Signup</li></Link>
+                            </>
                     }
-                    <Link to='/signup'><li className='md:px-5'>Signup</li></Link>
                 </ul>
             </div>
             <div className="navbar-end">
                 {
                     user?.uid ?
                         <>
-                            <span className='tooltip tooltip-bottom' data-tip={user?.displayName}><img className="rounded-full h-10" src={user.photoURL} alt="" /></span>
+                            <span className='tooltip tooltip-bottom' data-tip={user?.displayName}><img className="rounded-full w-10 h-10" src={user.photoURL} alt="" /></span>
                             <button onClick={handelLogOut} className='px-2'>LogOut</button>
                         </>
                         :

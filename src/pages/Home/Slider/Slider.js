@@ -20,7 +20,7 @@ const Slider = ({ slider }) => {
                 <a href={`#slide${next}`} className="btn btn-circle">❯</a>
             </div>
 
-            <div className="absolute top-1/3 pl-64 text-5xl text-center">
+            <div className="absolute mx-16 mt-7 lg:top-1/3 lg:pl-52 lg:text-5xl text-center">
                 <h1 className='text-white' style={{ fontFamily: 'Passions Conflict' }}>A Wedding Photography</h1>
                 <h1 className='text-white font-bold'>The Most Important Thing <br /> At a Wedding is to Photography...
                 </h1>
