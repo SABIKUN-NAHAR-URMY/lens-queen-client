@@ -27,7 +27,7 @@ const Home = () => {
             .then(res => res.json())
             .then(data => setServices(data))
     }, []);
-
+    
     const sliderItem = [
         {
             image: img1,
