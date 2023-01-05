@@ -6,9 +6,14 @@ const Slider = ({ slider }) => {
     const { id, prev, next, image } = slider;
     return (
         <div id={`slide${id}`} className="carousel-item relative w-full">
-            <div className='img-gradient'>
-                <img className="w-full" src={image} alt="" />
+            <div>
+                <video autoPlay loop muted>
+                    <source src={image} type='video/mp4' />
+                </video>
             </div>
+            {/* <div className='img-gradient'>
+                <img className="w-full" src={image} alt="" />
+            </div> */}
 
             <div className="absolute flex justify-center transform -translate-y-1/2 left-5 right-5 bottom-0">
                 <a href={`#slide${prev}`} className="btn btn-circle mr-5">❮</a>

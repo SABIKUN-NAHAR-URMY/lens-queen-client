@@ -54,16 +54,6 @@ const MyReviewShow = ({ rm, handelDelete }) => {
                         </div>
                     </div>
 
-
-
-                    {/* <div className='flex items'>
-                        <h2 className="card-title font-bold">Service Name:  {rm.serviceName}</h2>
-                        <h2 className='text-xl font-semibold'>Review:  {rm.review}</h2>
-                        <h2 className='text-xl font-semibold'>Rating: {rm.rating}</h2>
-                        <h2 className='text-xl font-semibold'>Date and Time: {rm.dateAndTime}</h2>
-                        <img className='w-16 h-16 rounded-full' src={rm.reviewerImage} alt="" />
-                    </div> */}
-
                     <div className="card-actions justify-center">
                         <button onClick={() => handelEdit(rm._id)} className="btn btn-active btn-ghost">Edit</button>
                         <button onClick={() => handelDelete(rm._id)} className="btn btn-active btn-ghost">Delete</button>
